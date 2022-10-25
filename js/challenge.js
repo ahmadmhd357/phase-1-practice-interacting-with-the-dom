@@ -22,14 +22,27 @@ plus.addEventListener('click',()=>{
     counter.innerText = seconds;
     
 });
+let count = 1;
+let counts = 1;
 let heart = document.getElementById('heart');
 heart.addEventListener('click',()=>{
     // e.preventDefault();
+    
+    const oldList = document.getElementById(seconds);
+    if(oldList){counts = counts + 1} else{counts = 1};
+    if (oldList){
+     oldList.innerText = `${seconds} has been liked ${counts} times `;
+     return 
+    }
+    
     let likesList = document.createElement('li');
     let likes = document.querySelector('.likes');
-    likes.appendChild(likesList);
     
-    likesList.innerText = `${seconds} has been liked 1 time `
+    likesList.setAttribute('id',seconds);
+
+    
+    likesList.innerText = `${seconds} has been liked ${count} time `
+    likes.appendChild(likesList);
     
 });
 let comment = document.getElementById('comment-input');
